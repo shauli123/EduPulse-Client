@@ -4,6 +4,8 @@ import { AuthProvider, useAuth } from './context/AuthContext';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
+import CreateCourse from './pages/CreateCourse';
+import CourseViewer from './pages/CourseViewer';
 
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { user, isLoading } = useAuth();
@@ -34,7 +36,22 @@ function App() {
               </ProtectedRoute>
             }
           />
-          {/* Add more protected routes here */}
+          <Route
+            path="/create-course"
+            element={
+              <ProtectedRoute>
+                <CreateCourse />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/course/:id"
+            element={
+              <ProtectedRoute>
+                <CourseViewer />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       </Router>
     </AuthProvider>
