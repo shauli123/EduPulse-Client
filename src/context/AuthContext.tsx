@@ -1,6 +1,12 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import api from '../services/api';
 
+interface UserPreferences {
+    learningStyle: 'text' | 'video' | 'interactive' | 'mixed';
+    difficulty: 'easy' | 'medium' | 'hard';
+    learningAnalysis: string;
+}
+
 interface User {
     _id: string;
     name: string;
@@ -9,6 +15,7 @@ interface User {
     xp: number;
     level: number;
     streak: number;
+    preferences?: UserPreferences;
 }
 
 interface AuthContextType {
